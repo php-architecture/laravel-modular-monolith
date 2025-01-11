@@ -1,69 +1,141 @@
 # laravel-modular-monolith
 Laravel modular monolith suggested architecture. 
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Modular Monolith Course Assessment
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Modular Monolith Course Assessment**
 
-## About Laravel
+**Description**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+You are tasked with creating a backend system for a doctor appointment booking application. The system will be designed for a specific single doctor and should handle the logic behind managing and booking appointments. The project focuses on implementing the necessary APIs and functionality to meet the business requirements.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Business Requirements:**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Your application should adhere to the following business requirements:
 
-## Learning Laravel
+**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Doctor Availability:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1.  As a doctor, I want to be able to list my slots
+    
+2.  As a doctor, I want to be able to add new slots where a single time slot should have the following:
+    
 
-## Laravel Sponsors
+1.  Id: Guid [?]
+    
+2.  Time: Date → 22/02/2023 04:30 pm [timestamp]
+    
+3.  DoctorId: Guid [doctor_id]
+    
+4.  DoctorName: string [doctor_name] (from relation)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5.  IsReserved: bool 
+    
+6.  Cost: Decimal 
+    
 
-### Premium Partners
+**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Appointment Booking:
 
-## Contributing
+** 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  As a **Patient,** I want to be able to **view** all doctors' available (only) **slots**
+> Note: isReserved == true should not be shown, before now slots
+    
+2.  As a **Patient,** I want to be able to **book** an appointment on a free **slot where.** An Appointment should have the following:
+    
 
-## Code of Conduct
+1.  Id: Guid 
+    
+2.  SlotId: Guid [slot_id]
+    
+3.  PatientId: Guid
+    
+4.  PatientName: string [from relation]
+    
+5.  ReservedAt: Datetime
+    
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**
 
-## Security Vulnerabilities
+#### Appointment Confirmation:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**
 
-## License
+1.  Once a patient schedules an appointment, the system should send a confirmation notification to the **patient** and the **doctor**
+    
+2.  The confirmation notification should include the appointment details, such as the patient's name, appointment time, and Doctor's name.
+    
+3.  For the sake of this assessment, the notification could be just a **Log message**
+    
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**
+
+#### Doctor Appointment Management:
+
+**
+
+1.  As a Doctor, I want to be able to view my upcoming **appointments**.
+    
+2.  As a Doctor, I want to be able to mark appointments as **completed** or **cancel** them if necessary.
+> Note: we can add "booked" status for the appointment as the default
+
+**
+
+#### Data Persistence:
+
+**
+
+1.  Use any db engine or even **in-memory list** with no db at all
+    
+
+#### **Specifications:**
+
+1.  You don’t need to care about authentication or authorization, make it public APIs
+    
+2.  Assume the system is serving a single Doctor only
+    
+3.  Apply **modular monolith architecture**
+    
+4.  The system should consist of **four** modules each with a different architecture as follows:
+    
+
+1.  **DoctorAvailability Module**: Traditional Layered Architecture
+    
+2.  **Appointment Booking Module**: Clean architecture
+    
+3.  **Appointment Confirmation Module**: Simplest architecture possible
+    
+**
+
+4. Doctor Appointment Management: Hexagonal Architecture
+
+**
+
+6.  **(A plus** **point**)Write unit and integration testing
+    
+
+**Deliverables**
+
+Push the complete source code of your application to a source code repository of your choice (e.g., GitHub, GitLab, Bitbucket).
+
+Ensure that commits are done incrementally and reflect your progress throughout development.
+
+**Evaluation Criteria**
+
+Your project will be evaluated based on the following criteria:
+
+1.  Correct implementation of all the required business requirements.
+    
+2.  Compliance with each specified architecture rule
+    
+3.  Proper Modularity and integration between them
+    
+4.  Code quality, including readability, maintainability, adherence to best practices, and separation of concerns
+    
+
+Good luck!
