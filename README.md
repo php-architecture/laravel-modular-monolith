@@ -26,7 +26,7 @@ Your application should adhere to the following business requirements:
 
 1.  Id: Guid [?]
     
-2.  Time: Date → 22/02/2023 04:30 pm [datetime or timestamp] 
+2.  Time: Date → 22/02/2023 04:30 pm [timestamp]
     
 3.  DoctorId: Guid [doctor_id]
     
@@ -57,7 +57,7 @@ Your application should adhere to the following business requirements:
     
 4.  PatientName: string [from relation]
     
-5.  ReservedAt: Date
+5.  ReservedAt: Datetime
     
 
 **
@@ -82,7 +82,7 @@ Your application should adhere to the following business requirements:
 1.  As a Doctor, I want to be able to view my upcoming **appointments**.
     
 2.  As a Doctor, I want to be able to mark appointments as **completed** or **cancel** them if necessary.
-    
+> Note: we can add "booked" status for the appointment as the default
 
 **
 
@@ -112,7 +112,7 @@ Your application should adhere to the following business requirements:
     
 **
 
-Doctor Appointment Management: Hexagonal Architecture
+4. Doctor Appointment Management: Hexagonal Architecture
 
 **
 
