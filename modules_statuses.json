@@ -1,6 +1,6 @@
 {
-    "DoctorAvailability": true,
     "AppointmentBooking": true,
     "AppointmentConfirmation": true,
-    "DoctorAppointmentManagement": true
+    "DoctorAppointmentManagement": true,
+    "DoctorAvailability": true
 }
