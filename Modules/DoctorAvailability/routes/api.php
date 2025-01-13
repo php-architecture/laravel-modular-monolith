@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\DoctorAvailability\Http\Controllers\DoctorAvailabilityController;
 
 /*
  *--------------------------------------------------------------------------
@@ -14,10 +13,25 @@ use Modules\DoctorAvailability\Http\Controllers\DoctorAvailabilityController;
  *
  */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('doctoravailability', DoctorAvailabilityController::class)->names('doctoravailability');
-});
+// Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
+//     Route::apiResource('doctoravailability', DoctorAvailabilityController::class)->names('doctoravailability');
+// });
 
-Route::get('/doctor-availability', function () {
-    return "hello, world!";
+Route::group(['prefix' => 'v1/doctor-availability'], function () {
+
+    // list all doctors slots
+    Route::get('/slots', function () {
+
+    });
+
+    // create a new doctor slot
+    Route::post('/slots', function () {
+
+    });
+
+    // update a doctor slot
+    Route::put('/slots/{id}', function () {
+
+    });
+
 });
