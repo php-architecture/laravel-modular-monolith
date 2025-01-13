@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
             $table->string('name');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('status');
-            $table->decimal('price', 6, 2);
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

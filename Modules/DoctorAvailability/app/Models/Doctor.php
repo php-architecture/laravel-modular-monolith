@@ -23,6 +23,7 @@ class Doctor extends Model
         'price'
     ];
 
+
     // protected static function newFactory(): DoctorFactory
     // {
     //     // return DoctorFactory::new();

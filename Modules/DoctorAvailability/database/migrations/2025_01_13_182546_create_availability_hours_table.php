@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('day');
             $table->time('start_time');
             $table->time('end_time');
+            $table->decimal('cost');
+            $table->decimal('is_reserved')->default(false);
             $table->timestamps();
-            $table->softDeletes();
-
         });
     }
 
