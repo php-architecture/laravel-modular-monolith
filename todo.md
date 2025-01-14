@@ -2,7 +2,7 @@
 
 ## Requirements
 - [x] complete 1# module requirements
-- [ ] complete 1# module architecture
+- [x] complete 1# module architecture
 - [ ] complete 2# module requirements
 - [ ] complete 2# module architecture
 - [ ] complete 3# module requirements

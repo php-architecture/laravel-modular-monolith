@@ -3,17 +3,15 @@
 namespace Modules\DoctorAvailability\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\DoctorAvailability\Database\Seeders\DoctorsSeeder;
+use Modules\DoctorAvailability\Models\Doctor;
 
-class DoctorAvailabilityDatabaseSeeder extends Seeder
+class DoctorsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $this->call([
-            DoctorsSeeder::class
-        ]);
+        Doctor::factory()->count(1)->create();
     }
 }
