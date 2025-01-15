@@ -13,6 +13,11 @@ class AvailabilityHourRepository
         return AvailabilityHour::all();
     }
 
+    public function getAllAvailableHours()
+    {
+        return AvailabilityHour::where('is_reserved', false)->get();
+    }
+
     public function create($data)
     {
         return AvailabilityHour::create(array_merge($data, [

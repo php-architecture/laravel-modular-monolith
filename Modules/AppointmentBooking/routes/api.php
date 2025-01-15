@@ -12,8 +12,13 @@ use Modules\AppointmentBooking\Http\Controllers\AppointmentBookingController;
  * routes are loaded by the RouteServiceProvider within a group which
  * is assigned the "api" middleware group. Enjoy building your API!
  *
-*/
+ */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('appointmentbooking', AppointmentBookingController::class)->names('appointmentbooking');
+// Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
+//     Route::apiResource('appointmentbooking', AppointmentBookingController::class)->names('appointmentbooking');
+// });
+
+Route::group(['prefix' => 'v1/book-appointment'], function () {
+    Route::get('/available-hours', [AppointmentBookingController::class, 'getAvailableHours']);
+    Route::post('/book', [AppointmentBookingController::class, 'bookAppointment']);
 });

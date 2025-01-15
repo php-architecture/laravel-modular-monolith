@@ -17,6 +17,6 @@ class getAllAvailableHoursService implements getAllAvailableHourInterface
 
     public function getAllAvailableHours()
     {
-        return $this->availabilityHourRepository->getAll();
+        return $this->availabilityHourRepository->getAllAvailableHours();
     }
 }
