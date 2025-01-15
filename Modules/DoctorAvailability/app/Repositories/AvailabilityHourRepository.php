@@ -21,4 +21,11 @@ class AvailabilityHourRepository
         ]));
     }
 
+    public function bookSlot($id)
+    {
+        return AvailabilityHour::find($id)->update([
+            'is_reserved' => true
+        ]);
+    }
+
 }
