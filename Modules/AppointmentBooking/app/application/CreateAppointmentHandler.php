@@ -11,10 +11,10 @@ class CreateAppointmentHandler
 {
     private $appointmentRepo;
     private $reserveSlotService;
-    public function __construct(AppointmentRepoInterface $appointmentRepo, ReserveSlotInterface $reserveSlot)
+    public function __construct(AppointmentRepoInterface $appointmentRepo, ReserveSlotInterface $reserveSlotService)
     {
         $this->appointmentRepo    = $appointmentRepo;
-        $this->reserveSlotService = $reserveSlotInterface;
+        $this->reserveSlotService = $reserveSlotService;
     }
 
     public function handle(array $data)

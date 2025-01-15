@@ -2,6 +2,8 @@
 
 namespace Modules\AppointmentBooking\Providers;
 
+use Modules\AppointmentBooking\domain\contracts\AppointmentRepoInterface;
+use Modules\AppointmentBooking\Infrastructure\AppointmentRepo;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 use Illuminate\Support\Facades\Blade;

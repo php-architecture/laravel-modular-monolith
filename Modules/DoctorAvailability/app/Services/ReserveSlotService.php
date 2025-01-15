@@ -3,9 +3,9 @@
 namespace Modules\DoctorAvailability\Services;
 
 use Modules\DoctorAvailability\Repositories\AvailabilityHourRepository;
-use Modules\DoctorAvailability\Services\interfaces\BookNewAppointmentInterface;
+use Modules\DoctorAvailability\Services\interfaces\ReserveSlotInterface;
 
-class ReserveSlotService implements BookNewAppointmentInterface
+class ReserveSlotService implements ReserveSlotInterface
 {
     private $availabilityHourRepository;
 
@@ -14,7 +14,7 @@ class ReserveSlotService implements BookNewAppointmentInterface
         $this->availabilityHourRepository = $availabilityHourRepository;
     }
 
-    public function bookNewAppointment($id)
+    public function reserveSlot($id)
     {
         $this->availabilityHourRepository->bookSlot($id);
     }

@@ -21,16 +21,17 @@ class AvailabilityHourRepository
     public function create($data)
     {
         return AvailabilityHour::create(array_merge($data, [
-            'uuid'        => Str::uuid(),
+            'uuid' => Str::uuid(),
             'is_reserved' => false
         ]));
     }
 
     public function bookSlot($id)
     {
-        return AvailabilityHour::find($id)->update([
-            'is_reserved' => true
-        ]);
+        return AvailabilityHour::where('uuid', $id)
+            ->update([
+                'is_reserved' => 1
+            ]);
     }
 
 }

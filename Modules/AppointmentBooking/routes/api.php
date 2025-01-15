@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\AppointmentBooking\Http\Controllers\AppointmentBookingController;
 
 /*
  *--------------------------------------------------------------------------
@@ -14,11 +13,7 @@ use Modules\AppointmentBooking\Http\Controllers\AppointmentBookingController;
  *
  */
 
-// Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-//     Route::apiResource('appointmentbooking', AppointmentBookingController::class)->names('appointmentbooking');
-// });
-
 Route::group(['prefix' => 'v1/book-appointment'], function () {
-    Route::get('/available-hours', [AppointmentBookingController::class, 'getAvailableHours']);
-    Route::post('/book', [AppointmentBookingController::class, 'bookAppointment']);
+    Route::get('/available-hours', \Modules\AppointmentBooking\api\getAllAvailableHoursController::class);
+    Route::post('/book', \Modules\AppointmentBooking\api\CreateAppointmentController::class);
 });
