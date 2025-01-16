@@ -4,7 +4,7 @@ namespace Modules\DoctorAvailability\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modules\DoctorAvailability\Services\AvailabilityHourService;
-use Modules\DoctorAvailability\Http\Requests\CreateAppointmentRequest;
+use Modules\DoctorAvailability\Http\Requests\AddNewDoctorSlotRequest;
 
 class AddNewDoctorSlotController extends Controller
 {
@@ -15,7 +15,7 @@ class AddNewDoctorSlotController extends Controller
         $this->availabilityHourService = $availabilityHourService;
     }
 
-    public function __invoke(CreateAppointmentRequest $request)
+    public function __invoke(AddNewDoctorSlotRequest $request)
     {
         $this->availabilityHourService->create($request->validated());
 

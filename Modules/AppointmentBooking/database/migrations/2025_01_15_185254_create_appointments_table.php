@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('uuid')->primary();
             $table->foreignId('slot_id');
             $table->string('patient_name');
+            $table->string('state')->default('upcoming');
             $table->dateTime('reserved_at')->useCurrent();
             $table->timestamps();
         });

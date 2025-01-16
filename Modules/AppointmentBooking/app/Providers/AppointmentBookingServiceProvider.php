@@ -2,14 +2,18 @@
 
 namespace Modules\AppointmentBooking\Providers;
 
-use Modules\AppointmentBooking\domain\contracts\AppointmentRepoInterface;
-use Modules\AppointmentBooking\Infrastructure\AppointmentRepo;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
+use Modules\AppointmentBooking\Infrastructure\AppointmentRepo;
+use Modules\AppointmentBooking\shared\GetAllAppointmentService;
+use Modules\AppointmentBooking\shared\UpdateAppointmentStateService;
 use Modules\DoctorAvailability\Services\getAllAvailableHoursService;
+use Modules\AppointmentBooking\domain\contracts\AppointmentRepoInterface;
+use Modules\AppointmentBooking\shared\contract\getAllAppointmentInterface;
+use Modules\AppointmentBooking\shared\contract\updateAppointmentStateInterface;
 use Modules\DoctorAvailability\Services\interfaces\getAllAvailableHourInterface;
 
 class AppointmentBookingServiceProvider extends ServiceProvider
@@ -46,6 +50,8 @@ class AppointmentBookingServiceProvider extends ServiceProvider
 
         //in module AppointmentBooking
         $this->app->bind(AppointmentRepoInterface::class, AppointmentRepo::class);
+        $this->app->bind(getAllAppointmentInterface::class, GetAllAppointmentService::class);
+        $this->app->bind(updateAppointmentStateInterface::class, UpdateAppointmentStateService::class);
     }
 
     /**
