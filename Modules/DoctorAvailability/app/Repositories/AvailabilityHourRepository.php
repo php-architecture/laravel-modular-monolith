@@ -26,12 +26,11 @@ class AvailabilityHourRepository
         ]));
     }
 
-    public function bookSlot($id)
+    public function bookSlot($id): AvailabilityHour
     {
-        return AvailabilityHour::where('uuid', $id)
-            ->update([
-                'is_reserved' => 1
-            ]);
+        return tap(AvailabilityHour::where('uuid', $id)->first(), function ($instance) {
+            $instance->update(['is_reserved' => 1]);
+        });
     }
 
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('patient_name');
             $table->string('state')->default('upcoming');
             $table->dateTime('reserved_at')->useCurrent();
+            $table->dateTime('date')->nullable();
             $table->timestamps();
         });
     }

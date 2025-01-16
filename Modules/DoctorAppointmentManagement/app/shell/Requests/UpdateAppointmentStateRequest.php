@@ -1,11 +1,12 @@
 <?php
 
-namespace Modules\AppointmentBooking\api\Requests;
+namespace Modules\DoctorAppointmentManagement\shell\Requests;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateAppointmentRequest extends FormRequest
+class UpdateAppointmentStateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,8 +16,8 @@ class CreateAppointmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'slot_id'=> ['required', 'uuid', Rule::exists('availability_hours', 'uuid')],
-            'patient_name' => ['required', 'string', 'max:255'],
+            'uuid'  => 'required|uuid|exists:appointments,uuid',
+            'state' => 'required|string|in:completed,cancelled'
         ];
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Modules\DoctorAppointmentManagement\shell\controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Modules\DoctorAppointmentManagement\shell\Requests\UpdateAppointmentStateRequest;
 use Modules\DoctorAppointmentManagement\shell\Services\UpdateAppointmentStateService;
 
 class UpdateAppointmentStateController extends Controller
@@ -14,12 +14,9 @@ class UpdateAppointmentStateController extends Controller
         $this->updateAppointmentStateService = $updateAppointmentStateService;
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(UpdateAppointmentStateRequest $request)
     {
-        $validated = $request->validate([
-            'uuid'  => 'required|uuid|exists:appointments,uuid',
-            'state' => 'required|string|in:completed,cancelled'
-        ]);
+        $validated = $request->validated();
 
         return $this->updateAppointmentStateService->updateAppointmentState($validated['uuid'], $validated['state']);
     }

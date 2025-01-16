@@ -9,7 +9,8 @@
 - [] complete 3# module architecture
 - [x] complete 4# module requirements
 - [x] complete 4# module architecture
-- [] complete 4# need some changes on date filter
+- [x] complete 4# need some changes on date filter
 ## Plus
 - [ ] write unit and integration testing
 - [ ] write architecture test
+- [ ] add simple documentation, seeders, postman collections

@@ -10,19 +10,21 @@ class AppointmentRepo implements AppointmentRepoInterface
 {
     public function bookAppointment(array $data)
     {
-        return Appointment::create(array_merge($data, ['uuid' => Str::uuid()]));
+        return Appointment::create(array_merge($data, [
+            'uuid' => Str::uuid(),
+            'reserved_at' => now()
+        ]));
     }
 
     public function getAllUpcomingAppointments()
     {
-        // we need to add date check filter
         return Appointment::where('state', 'upcoming')
+            ->where('date', '>=', now())
             ->get();
     }
 
     public function updateAppointmentState($id, $state)
     {
-        // dd(Appointment::where('uuid', $id)->first());
         return Appointment::where('uuid', $id)->update(['state' => $state]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\DoctorAvailability\Services;
 
+use Modules\DoctorAvailability\Models\AvailabilityHour;
 use Modules\DoctorAvailability\Repositories\AvailabilityHourRepository;
 use Modules\DoctorAvailability\Services\interfaces\ReserveSlotInterface;
 
@@ -14,8 +15,8 @@ class ReserveSlotService implements ReserveSlotInterface
         $this->availabilityHourRepository = $availabilityHourRepository;
     }
 
-    public function reserveSlot($id)
+    public function reserveSlot($id) : AvailabilityHour
     {
-        $this->availabilityHourRepository->bookSlot($id);
+        return $this->availabilityHourRepository->bookSlot($id);
     }
 }
