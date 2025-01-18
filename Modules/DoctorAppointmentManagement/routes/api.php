@@ -18,5 +18,5 @@ use Modules\DoctorAppointmentManagement\shell\controllers\GetAllUpcomingAppointm
 
 Route::group(['prefix' => 'v1/appointment-management'], function () {
     Route::get('/appointment', GetAllUpcomingAppointmentsController::class);
-    Route::post('/appointment', UpdateAppointmentStateController::class);
+    Route::put('/appointment', UpdateAppointmentStateController::class);
 });

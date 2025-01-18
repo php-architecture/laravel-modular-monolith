@@ -16,6 +16,8 @@ class CreateAppointmentController extends Controller
 
     public function __invoke(CreateAppointmentRequest $request)
     {
-        return $this->createAppointmentHandler->handle($request->validated());
+        $this->createAppointmentHandler->handle($request->validated());
+
+        return response()->json(['message' => 'Appointment created successfully'], 201);
     }
 }
