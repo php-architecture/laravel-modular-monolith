@@ -6,6 +6,8 @@ use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Modules\AppointmentBooking\domain\contracts\AppointmentRepoInterface;
+use Modules\AppointmentBooking\domain\models\Appointment;
+use Modules\AppointmentBooking\Events\AppointmentCreated;
 use Modules\DoctorAvailability\Models\AvailabilityHour;
 use Modules\DoctorAvailability\Services\interfaces\ReserveSlotInterface;
 
@@ -34,7 +36,10 @@ class CreateAppointmentHandler
 
             $data['date'] = $date;
 
-            $this->appointmentRepo->bookAppointment($data);
+            $appointment = $this->appointmentRepo->bookAppointment($data);
+
+            AppointmentCreated::dispatch($appointment);
+
             DB::commit();
 
             return true;
