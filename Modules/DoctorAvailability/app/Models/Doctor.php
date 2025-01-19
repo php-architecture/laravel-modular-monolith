@@ -12,7 +12,7 @@ class Doctor extends Model
 
     protected static function newFactory()
     {
-        return DoctorFactory::new ();
+        return DoctorFactory::new();
     }
 
     /**

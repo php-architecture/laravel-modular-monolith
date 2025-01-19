@@ -9,6 +9,7 @@ use Modules\DoctorAppointmentManagement\shell\Services\UpdateAppointmentStateSer
 class UpdateAppointmentStateController extends Controller
 {
     private $updateAppointmentStateService;
+
     public function __construct(UpdateAppointmentStateService $updateAppointmentStateService)
     {
         $this->updateAppointmentStateService = $updateAppointmentStateService;
@@ -18,6 +19,8 @@ class UpdateAppointmentStateController extends Controller
     {
         $validated = $request->validated();
 
-        return $this->updateAppointmentStateService->updateAppointmentState($validated['uuid'], $validated['state']);
+        $this->updateAppointmentStateService->updateAppointmentState($validated['uuid'], $validated['state']);
+
+        return response()->json(['message' => 'Appointment updated successfully']);
     }
 }
