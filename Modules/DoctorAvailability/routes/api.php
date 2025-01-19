@@ -1,23 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\DoctorAvailability\Http\Controllers\DoctorAvailabilityController;
+use Modules\DoctorAvailability\Http\Controllers\AddNewDoctorSlotController;
+use Modules\DoctorAvailability\Http\Controllers\getAllDoctorSlotsController;
 
-/*
- *--------------------------------------------------------------------------
- * API Routes
- *--------------------------------------------------------------------------
- *
- * Here is where you can register API routes for your application. These
- * routes are loaded by the RouteServiceProvider within a group which
- * is assigned the "api" middleware group. Enjoy building your API!
- *
- */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('doctoravailability', DoctorAvailabilityController::class)->names('doctoravailability');
-});
-
-Route::get('/doctor-availability', function () {
-    return "hello, world!";
+Route::group(['prefix' => 'v1/doctor-availability'], function () {
+    Route::get('/slots', getAllDoctorSlotsController::class);
+    Route::post('/slots' , AddNewDoctorSlotController::class);
 });

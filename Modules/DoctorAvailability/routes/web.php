@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Modules\DoctorAvailability\Http\Controllers\DoctorAvailabilityController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +9,8 @@ use Modules\DoctorAvailability\Http\Controllers\DoctorAvailabilityController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::group([], function () {
-    Route::resource('doctoravailability', DoctorAvailabilityController::class)->names('doctoravailability');
-});
+// Route::group([], function () {
+//     Route::resource('doctoravailability', DoctorAvailabilityController::class)->names('doctoravailability');
+// });
