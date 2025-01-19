@@ -13,19 +13,24 @@ class AvailabilityHourRepository
         return AvailabilityHour::all();
     }
 
+    public function getAllAvailableHours()
+    {
+        return AvailabilityHour::where('is_reserved', false)->get();
+    }
+
     public function create($data)
     {
         return AvailabilityHour::create(array_merge($data, [
-            'uuid'        => Str::uuid(),
+            'uuid' => Str::uuid(),
             'is_reserved' => false
         ]));
     }
 
-    public function bookSlot($id)
+    public function bookSlot($id): AvailabilityHour
     {
-        return AvailabilityHour::find($id)->update([
-            'is_reserved' => true
-        ]);
+        return tap(AvailabilityHour::where('uuid', $id)->first(), function ($instance) {
+            $instance->update(['is_reserved' => 1]);
+        });
     }
 
 }
