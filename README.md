@@ -73,7 +73,7 @@ Your application should adhere to the following business requirements:
 3.  For the sake of this assessment, the notification could be just a **Log message**
     
 
-**
+******
 
 #### Doctor Appointment Management:
 

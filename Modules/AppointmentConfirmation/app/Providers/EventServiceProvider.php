@@ -3,6 +3,8 @@
 namespace Modules\AppointmentConfirmation\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Modules\AppointmentBooking\Events\AppointmentCreated;
+use Modules\AppointmentConfirmation\Listeners\AppointmentConfirmation;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<string, array<int, string>>
      */
-    protected $listen = [];
+    protected $listen = [
+        AppointmentCreated::class => [
+            AppointmentConfirmation::class
+        ]
+    ];
 
     /**
      * Indicates if events should be discovered.
